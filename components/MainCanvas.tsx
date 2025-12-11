@@ -60,6 +60,11 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
   const [modalView, setModalView] = useState('main'); // 'main' or a specific tool id
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [expandedSubsections, setExpandedSubsections] = useState<Record<string, boolean>>({});
+  const [injectedComponents, setInjectedComponents] = useState<any[]>([]);
+  const [chartConfig, setChartConfig] = useState({
+    title: '',
+    dataSource: '',
+  });
   const [chatMessages, setChatMessages] = useState<Array<{text: string, sender: 'user' | 'bw', timestamp: Date}>>([
     { text: "Hello! I'm your BW Consultant. How can I help you with your partnership analysis today?", sender: 'bw', timestamp: new Date() }
   ]);
@@ -96,6 +101,17 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
     setModalView('main'); // Reset to main view whenever a new modal is opened
   };
 
+  const handleAddChart = () => {
+    if (chartConfig.title && chartConfig.dataSource) {
+      setInjectedComponents(prev => [...prev, { type: 'chart', config: chartConfig }]);
+      setChartConfig({ title: '', dataSource: '' });
+      setActiveModal(null);
+    } else {
+      // Basic validation for chart config
+      alert('Please provide a title and select a data source.');
+    }
+  };
+
   const handleModalClose = () => {
     if (activeModal && requiredFields[activeModal]) {
       const errors: string[] = [];
@@ -123,6 +139,21 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
     // This is a placeholder for the concept.
     return null;
   }
+
+  const renderInjectedComponent = (component: any, index: number) => {
+    if (component.type === 'chart') {
+      // In a real app, you'd use a charting library like Recharts or Chart.js
+      return (
+        <div key={index} className="my-8 p-4 border border-stone-200 rounded-lg bg-stone-50">
+          <h3 className="text-center font-bold text-sm mb-2">{component.config.title}</h3>
+          <div className="text-center text-xs text-stone-500">
+            [Chart visualization for '{component.config.dataSource}' would be rendered here]
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
 
   const isStepComplete = (stepId: string) => {
     if (!requiredFields[stepId]) return false;
@@ -1240,13 +1271,13 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                                 <div>
                                     <h3 className="text-lg font-bold mb-4">Add Pie Chart</h3>
                                     <div className="space-y-4">
-                                        <div>
+                                        <div >
                                             <label className="block text-xs font-bold text-stone-700 mb-1">Chart Title</label>
-                                            <input type="text" className="w-full p-2 border border-stone-200 rounded text-sm" placeholder="e.g., Market Share Distribution"/>
+                                            <input type="text" value={chartConfig.title} onChange={(e) => setChartConfig(prev => ({...prev, title: e.target.value}))} className="w-full p-2 border border-stone-200 rounded text-sm" placeholder="e.g., Market Share Distribution"/>
                                         </div>
                                         <div>
                                             <label className="block text-xs font-bold text-stone-700 mb-1">Data Source</label>
-                                            <select className="w-full p-2 border border-stone-200 rounded text-sm" disabled={!params.industry.length && !params.fundingSource}>
+                                            <select value={chartConfig.dataSource} onChange={(e) => setChartConfig(prev => ({...prev, dataSource: e.target.value}))} className="w-full p-2 border border-stone-200 rounded text-sm" disabled={!params.industry.length && !params.fundingSource}>
                                                 <option value="">Select data to visualize...</option>
                                                 {params.industry.length > 0 && <option value="industry">Industry Breakdown</option>}
                                                 {/* Add a placeholder for competitor data */}
@@ -1271,7 +1302,10 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                                 {validationErrors.length > 0 && <p className="text-xs text-red-600 font-bold">Please fill in all required fields (*).</p>}
                             </div>
                             <div className="flex items-center gap-4">
-                            {['doc-suite', 'doc-summary', 'doc-bi', 'doc-analyzer', 'doc-diversification', 'doc-ethics', 'doc-precedent', 'letter-loi', 'letter-termsheet', 'letter-mou', 'letter-proposal', 'letter-im', 'letter-ddr', 'add-pie-chart', 'analysis', 'marketplace'].includes(activeModal || '') ? (
+                            {activeModal?.startsWith('add-') ? (
+                                <button onClick={handleAddChart} className="px-6 py-2 bg-green-600 text-white text-sm font-bold rounded shadow-lg hover:bg-green-700 transition-all">Add to Report</button>
+                            )
+                            : ['doc-suite', 'doc-summary', 'doc-bi', 'doc-analyzer', 'doc-diversification', 'doc-ethics', 'doc-precedent', 'letter-loi', 'letter-termsheet', 'letter-mou', 'letter-proposal', 'letter-im', 'letter-ddr', 'analysis', 'marketplace'].includes(activeModal || '') ? (
                                 <button onClick={() => { onGenerate(); handleModalClose(); }} className="px-6 py-2 bg-green-600 text-white text-sm font-bold rounded shadow-lg hover:bg-green-700 transition-all">
                                     {activeModal?.startsWith('add-') ? 'Add to Report' : 'Generate Document'}
                                 </button>
@@ -1392,6 +1426,9 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                             <h2 className="text-[10px] font-sans font-bold text-stone-400 uppercase tracking-widest mb-4 border-b border-stone-100 pb-2">03. Market Context</h2>
                             <p className="text-sm text-stone-400 italic">Awaiting market analysis...</p>
                         </div>
+
+                        {/* Injected components will render here */}
+                        {injectedComponents.map((comp, index) => renderInjectedComponent(comp, index))}
 
                         {/* 4. Risk & Historical */}
                         <div className="mb-12">
