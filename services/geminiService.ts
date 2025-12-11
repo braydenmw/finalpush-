@@ -1,9 +1,10 @@
 
 import { GoogleGenAI, Chat, Type } from "@google/genai";
 import { CopilotInsight, ReportParameters, LiveOpportunityItem, DeepReasoningAnalysis, GeopoliticalAnalysisResult, GovernanceAuditResult } from '../types';
+import { config, features, demoMessages } from './config';
 
-// Initialize the client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize the client only if real AI is enabled
+const ai = config.useRealAI ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }) : null;
 
 const SYSTEM_INSTRUCTION = `
 You are "BW Nexus AI" (NEXUS_OS_v4.1), the world's premier Economic Intelligence Operating System.
@@ -54,40 +55,114 @@ export const sendMessageStream = async (message: string) => {
 // --- NEW FUNCTIONS FOR APP.TSX ---
 
 export const generateCopilotInsights = async (params: ReportParameters): Promise<CopilotInsight[]> => {
-    // In a real app, this would call Gemini with the params context
-    // For now, we simulate a latency and return mock data to prevent token usage on auto-runs
+    if (config.useRealAI && ai) {
+        // Use real AI analysis
+        try {
+            const prompt = `Analyze this partnership strategy and provide 3 key insights:
+            Organization: ${params.organizationName}
+            Country: ${params.country}
+            Strategic Intent: ${params.strategicIntent}
+            Opportunity: ${params.specificOpportunity || 'General analysis'}
+
+            Provide insights in JSON format with: id, type (strategy/risk/opportunity), title, description.`;
+
+            const response = await ai.models.generateContent({
+                model: 'gemini-2.5-flash',
+                contents: prompt,
+                config: {
+                    responseMimeType: 'application/json',
+                    responseSchema: {
+                        type: Type.ARRAY,
+                        items: {
+                            type: Type.OBJECT,
+                            properties: {
+                                id: { type: Type.STRING },
+                                type: { type: Type.STRING, enum: ['strategy', 'risk', 'opportunity'] },
+                                title: { type: Type.STRING },
+                                description: { type: Type.STRING }
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (response.text) {
+                return JSON.parse(response.text) as CopilotInsight[];
+            }
+        } catch (error) {
+            console.warn('Real AI failed, falling back to demo:', error);
+        }
+    }
+
+    // Demo mode - return mock data
     return new Promise(resolve => {
         setTimeout(() => {
             const opportunityContext = params.specificOpportunity ? ` for ${params.specificOpportunity}` : '';
-            resolve([
-                { id: '1', type: 'strategy', title: 'Strategic Alignment', description: `Your intent to '${params.strategicIntent}'${opportunityContext} aligns with current ${params.country || 'market'} trends.` },
-                { id: '2', type: 'risk', title: 'Regulatory Friction', description: 'Monitor local compliance changes in the upcoming quarter.' },
-                { id: '3', type: 'opportunity', title: 'Market Gap', description: 'Under-served demand detected in your target sector.' }
-            ]);
-        }, 1200);
+            const insights: CopilotInsight[] = [
+                {
+                    id: '1',
+                    type: 'strategy',
+                    title: 'Strategic Alignment',
+                    description: `Your intent to '${params.strategicIntent}'${opportunityContext} aligns with current ${params.country || 'market'} trends.`,
+                    ...(features.shouldShowDemoIndicator() && { isDemo: true })
+                },
+                {
+                    id: '2',
+                    type: 'risk',
+                    title: 'Regulatory Friction',
+                    description: 'Monitor local compliance changes in the upcoming quarter.',
+                    ...(features.shouldShowDemoIndicator() && { isDemo: true })
+                },
+                {
+                    id: '3',
+                    type: 'opportunity',
+                    title: 'Market Gap',
+                    description: 'Under-served demand detected in your target sector.',
+                    ...(features.shouldShowDemoIndicator() && { isDemo: true })
+                }
+            ];
+            resolve(insights);
+        }, config.useRealAI ? 200 : 1200); // Faster response in demo mode
     });
 };
 
 export const askCopilot = async (query: string, params: ReportParameters): Promise<CopilotInsight> => {
-    // Uses the main chat session context
-    const chat = getChatSession();
-    const opportunityContext = params.specificOpportunity ? ` SPECIFIC OPPORTUNITY: ${params.specificOpportunity}` : '';
-    const incentiveContext = params.targetIncentives?.length ? ` TARGET INCENTIVES: ${params.targetIncentives.join(', ')}` : '';
-    
-    const contextMsg = `CONTEXT: User is analyzing ${params.organizationName} in ${params.country}. 
-    QUERY: ${query}. 
-    ${opportunityContext}
-    ${incentiveContext}
-    Provide a brief, high-level strategic insight (max 2 sentences).`;
-    
-    const response = await chat.sendMessage({ message: contextMsg });
+    if (config.useRealAI && ai) {
+        try {
+            // Uses the main chat session context
+            const chat = getChatSession();
+            const opportunityContext = params.specificOpportunity ? ` SPECIFIC OPPORTUNITY: ${params.specificOpportunity}` : '';
+            const incentiveContext = params.targetIncentives?.length ? ` TARGET INCENTIVES: ${params.targetIncentives.join(', ')}` : '';
+
+            const contextMsg = `CONTEXT: User is analyzing ${params.organizationName} in ${params.country}.
+            QUERY: ${query}.
+            ${opportunityContext}
+            ${incentiveContext}
+            Provide a brief, high-level strategic insight (max 2 sentences).`;
+
+            const response = await chat.sendMessage({ message: contextMsg });
+            return {
+                id: Date.now().toString(),
+                type: 'strategy',
+                title: 'Copilot Response',
+                description: response.text || "Analysis complete.",
+                content: response.text || "Analysis complete.",
+                confidence: 85
+            };
+        } catch (error) {
+            console.warn('Real AI failed, falling back to demo:', error);
+        }
+    }
+
+    // Demo mode fallback
     return {
         id: Date.now().toString(),
         type: 'strategy',
-        title: 'Copilot Response',
-        description: response.text || "Analysis complete.",
-        content: response.text || "Analysis complete.",
-        confidence: 85
+        title: 'Demo Copilot Response',
+        description: demoMessages.aiResponse,
+        content: demoMessages.aiResponse,
+        confidence: 75,
+        ...(features.shouldShowDemoIndicator() && { isDemo: true })
     };
 };
 

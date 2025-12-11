@@ -122,15 +122,6 @@ export const Footer: React.FC = () => {
               <button onClick={() => setActiveModal('terms')} className="hover:text-white transition-colors flex items-center gap-2">
                 <FileText className="h-4 w-4" /> Terms of Service
               </button>
-              <a 
-                href="https://github.com/bwgadiv/bw-global-advisory-2.0.git" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="hover:text-white transition-colors flex items-center gap-2"
-              >
-                <Github className="h-4 w-4" />
-                Source
-              </a>
             </div>
           </div>
           

@@ -42,6 +42,7 @@ import { generateCopilotInsights, generateReportSectionStream, askCopilot } from
 import { generateBenchmarkData } from './services/mockDataGenerator';
 import { calculateSPI } from './services/engine';
 import { LayoutGrid, Globe, ShieldCheck, Layers, LayoutDashboard, Plus } from 'lucide-react';
+import DemoIndicator from './components/DemoIndicator';
 
 // --- TYPES & INITIAL STATE ---
 const initialSection: ReportSection = { id: '', title: '', content: '', status: 'pending' };
@@ -326,14 +327,15 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <button 
+                    <DemoIndicator className="mr-2" />
+                    <button
                         onClick={() => setViewMode('admin-dashboard')}
                         className="p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors"
                         title="Admin Console"
                     >
                         <ShieldCheck className="w-5 h-5" />
                     </button>
-                    <button 
+                    <button
                         onClick={startNewMission}
                         className="hidden lg:flex items-center gap-2 text-xs font-bold text-white bg-bw-navy hover:bg-bw-gold hover:text-bw-navy px-4 py-2 rounded-lg transition-all shadow-md hover:shadow-lg"
                     >
