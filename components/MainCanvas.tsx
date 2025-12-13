@@ -320,28 +320,181 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                 {/* Optional Intelligence Enhancements */}
                 <div>
                     <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-3">Optional Intelligence Enhancements</h3>
-                    <p className="text-xs text-stone-500 mb-4">Add advanced analysis and marketplace intelligence to enrich your final report. Select as many as needed.</p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <p className="text-xs text-stone-500 mb-4">Enhance your Strategic Roadmap draft with specialized analysis. Select any combination to add depth and insights that will improve your final reports and letters.</p>
+                    <div className="grid grid-cols-1 gap-3">
                         <button
-                            onClick={() => openModal('analysis')}
-                            className="p-3 bg-gradient-to-r from-indigo-50 to-indigo-100 border border-indigo-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all text-left group"
+                            onClick={() => {
+                                // Add ROI analysis to draft
+                                const roiAnalysis = {
+                                  type: 'analysis',
+                                  title: 'ROI Diagnostic Analysis',
+                                  content: 'Financial viability assessment with IRR calculations and payback period analysis.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, roiAnalysis]);
+                                alert('ROI Diagnostic Analysis added to your Strategic Roadmap draft. This will enhance financial sections of generated documents.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-indigo-50 to-indigo-100 border border-indigo-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all text-left group"
                         >
-                            <div className="flex items-center gap-2 mb-1">
-                                <BarChart3 className="w-5 h-5 text-indigo-600" />
-                                <span className="text-xs font-bold text-stone-900">Advanced Analysis</span>
+                            <div className="flex items-center gap-3 mb-2">
+                                <BarChart3 className="w-6 h-6 text-indigo-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">ROI Diagnostic</span>
+                                    <p className="text-xs text-indigo-700 font-medium">Financial Analysis Tool</p>
+                                </div>
                             </div>
-                            <p className="text-[10px] text-stone-600">ROI diagnostics, scenario planning, due diligence</p>
+                            <p className="text-xs text-stone-600 mb-2">Calculates Return on Investment, Internal Rate of Return, and payback periods to validate financial viability.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Executive Summary, Investment Memos, Term Sheets</p>
                         </button>
 
                         <button
-                            onClick={() => openModal('marketplace')}
-                            className="p-3 bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all text-left group"
+                            onClick={() => {
+                                // Add scenario planning to draft
+                                const scenarioAnalysis = {
+                                  type: 'analysis',
+                                  title: 'Multi-Scenario Planning',
+                                  content: 'Best case, base case, and worst case financial projections with risk-weighted outcomes.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, scenarioAnalysis]);
+                                alert('Multi-Scenario Planning added to your Strategic Roadmap draft. This provides comprehensive risk assessment for decision-makers.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
                         >
-                            <div className="flex items-center gap-2 mb-1">
-                                <Handshake className="w-5 h-5 text-pink-600" />
-                                <span className="text-xs font-bold text-stone-900">Marketplace Intelligence</span>
+                            <div className="flex items-center gap-3 mb-2">
+                                <Network className="w-6 h-6 text-blue-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Scenario Planning</span>
+                                    <p className="text-xs text-blue-700 font-medium">Risk Assessment Tool</p>
+                                </div>
                             </div>
-                            <p className="text-[10px] text-stone-600">Partner compatibility, opportunity discovery</p>
+                            <p className="text-xs text-stone-600 mb-2">Models multiple outcome scenarios (best/base/worst case) with probability weighting and risk mitigation strategies.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Assessments, Due Diligence Reports, Investment Proposals</p>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                // Add due diligence to draft
+                                const dueDiligenceAnalysis = {
+                                  type: 'analysis',
+                                  title: 'Due Diligence Intelligence',
+                                  content: 'Automated background checks and compliance verification for potential partners and targets.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, dueDiligenceAnalysis]);
+                                alert('Due Diligence Intelligence added to your Strategic Roadmap draft. This strengthens credibility and reduces legal risks.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <ShieldCheck className="w-6 h-6 text-green-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Due Diligence Engine</span>
+                                    <p className="text-xs text-green-700 font-medium">Compliance Verification</p>
+                                </div>
+                            </div>
+                            <p className="text-xs text-stone-600 mb-2">Comprehensive background verification, regulatory compliance checks, and risk factor identification.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Partnership Agreements, Legal Documents, Risk Reports</p>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                // Add marketplace intelligence to draft
+                                const marketplaceAnalysis = {
+                                  type: 'marketplace',
+                                  title: 'Partner Compatibility Analysis',
+                                  content: 'AI-powered matching algorithm assessing cultural fit, strategic alignment, and partnership potential.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, marketplaceAnalysis]);
+                                alert('Partner Compatibility Analysis added to your Strategic Roadmap draft. This identifies optimal partnership opportunities.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all text-left group"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <Handshake className="w-6 h-6 text-pink-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Partner Compatibility</span>
+                                    <p className="text-xs text-pink-700 font-medium">Strategic Matching</p>
+                                </div>
+                            </div>
+                            <p className="text-xs text-stone-600 mb-2">Evaluates potential partners based on strategic alignment, cultural compatibility, and mutual benefit potential.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Partnership Proposals, LOIs, Joint Venture Agreements</p>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                // Add diversification analysis to draft
+                                const diversificationAnalysis = {
+                                  type: 'analysis',
+                                  title: 'Market Diversification Analysis',
+                                  content: 'Herfindahl-Hirschman Index analysis of market concentration and diversification recommendations.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, diversificationAnalysis]);
+                                alert('Market Diversification Analysis added to your Strategic Roadmap draft. This optimizes portfolio risk management.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 rounded-lg hover:shadow-md hover:border-purple-300 transition-all text-left group"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <PieChart className="w-6 h-6 text-purple-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Diversification Analysis</span>
+                                    <p className="text-xs text-purple-700 font-medium">Portfolio Optimization</p>
+                                </div>
+                            </div>
+                            <p className="text-xs text-stone-600 mb-2">Analyzes market concentration using HHI methodology and recommends diversification strategies to reduce dependency risks.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Reports, Investment Strategies, Portfolio Analysis</p>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                // Add ethical compliance to draft
+                                const ethicalAnalysis = {
+                                  type: 'analysis',
+                                  title: 'Ethical & Compliance Review',
+                                  content: 'Comprehensive ethical assessment including labor practices, environmental impact, and corruption risk analysis.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, ethicalAnalysis]);
+                                alert('Ethical & Compliance Review added to your Strategic Roadmap draft. This ensures sustainable and responsible partnerships.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-lg hover:shadow-md hover:border-red-300 transition-all text-left group"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <Shield className="w-6 h-6 text-red-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Ethical Compliance</span>
+                                    <p className="text-xs text-red-700 font-medium">Sustainability Assessment</p>
+                                </div>
+                            </div>
+                            <p className="text-xs text-stone-600 mb-2">Evaluates ethical standards, labor practices, environmental impact, and corruption risks with mitigation recommendations.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Compliance Reports, ESG Analysis, Stakeholder Communications</p>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                // Add historical precedent to draft
+                                const historicalAnalysis = {
+                                  type: 'analysis',
+                                  title: 'Historical Precedent Analysis',
+                                  content: 'Comparative analysis against 100 years of historical partnership data with success probability modeling.',
+                                  timestamp: new Date()
+                                };
+                                setInjectedComponents(prev => [...prev, historicalAnalysis]);
+                                alert('Historical Precedent Analysis added to your Strategic Roadmap draft. This provides data-driven insights from past partnerships.');
+                            }}
+                            className="p-4 bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200 rounded-lg hover:shadow-md hover:border-amber-300 transition-all text-left group"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <History className="w-6 h-6 text-amber-600" />
+                                <div>
+                                    <span className="text-sm font-bold text-stone-900">Historical Precedents</span>
+                                    <p className="text-xs text-amber-700 font-medium">Data-Driven Insights</p>
+                                </div>
+                            </div>
+                            <p className="text-xs text-stone-600 mb-2">Compares current opportunity against 100+ years of historical partnership data with success probability calculations.</p>
+                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Assessments, Decision Frameworks, Strategic Planning</p>
                         </button>
                     </div>
                 </div>
@@ -392,84 +545,67 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                     </div>
                 </div>
 
-                {/* Document Generation Tools */}
+                {/* Document Generation Suite */}
                 <div>
                     <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-3">Document Generation Suite</h3>
-                    <p className="text-xs text-stone-500 mb-4">Once the Strategic Roadmap draft is finalized, use this suite to generate specific, official reports. Each tool leverages the complete dataset to create detailed documents tailored for different audiences and purposes.</p>
-                    <div className="grid grid-cols-3 gap-3">
-                        <button
-                            onClick={() => openModal('doc-suite')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Document Suite</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Generate LOI, MOU, proposals & more</p>
-                        </button>
+                    <p className="text-xs text-stone-500 mb-4">Generate official documents from your finalized Strategic Roadmap. Choose from these professional document types:</p>
 
-                        <button
-                            onClick={() => openModal('doc-summary')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Executive Summary</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">AI-generated strategic overview</p>
-                        </button>
+                    <div className="space-y-3">
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h4 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                                <FileText className="w-5 h-5" />
+                                Document Suite - Generate LOI, MOU, proposals & more
+                            </h4>
+                            <p className="text-sm text-blue-700 mb-3">Comprehensive business document generation including Letters of Intent, Memorandums of Understanding, partnership proposals, and formal business agreements.</p>
+                            <button
+                                onClick={() => openModal('doc-suite')}
+                                className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded hover:bg-blue-700 transition-all"
+                            >
+                                Configure Documents
+                            </button>
+                        </div>
 
-                        <button
-                            onClick={() => openModal('doc-bi')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <Database className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Business Intelligence</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Country-specific regulatory insights</p>
-                        </button>
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <h4 className="font-bold text-green-900 mb-2 flex items-center gap-2">
+                                <Presentation className="w-5 h-5" />
+                                Executive Summary - AI-generated strategic overview
+                            </h4>
+                            <p className="text-sm text-green-700 mb-3">Professional executive summaries tailored for different audiences (investors, board members, legal teams) with customizable length and focus areas.</p>
+                            <button
+                                onClick={() => openModal('doc-summary')}
+                                className="px-4 py-2 bg-green-600 text-white text-sm font-bold rounded hover:bg-green-700 transition-all"
+                            >
+                                Generate Summary
+                            </button>
+                        </div>
 
-                         <button
-                            onClick={() => openModal('doc-analyzer')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <Network className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Partnership Analyzer</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Analyze existing partnerships</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('doc-diversification')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <PieChart className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Diversification Report</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Analyze market concentration risk</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('doc-ethics')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <ShieldCheck className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Ethical Check Report</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Compliance & mitigation analysis</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('doc-precedent')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <History className="w-5 h-5 text-blue-600" />
-                                <span className="text-xs font-bold text-stone-900">Historical Precedent</span>
-                            </div>
-                            <p className="text-[10px] text-stone-600">Compare against historical cases</p>
-                        </button>
+                        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                            <h4 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                                <Database className="w-5 h-5" />
+                                Business Intelligence - Country-specific regulatory insights
+                            </h4>
+                            <p className="text-sm text-purple-700 mb-3">In-depth country and regional analysis including regulatory frameworks, business environment, and market intelligence reports.</p>
+                            <button
+                                onClick={() => openModal('doc-bi')}
+                                className="px-4 py-2 bg-purple-600 text-white text-sm font-bold rounded hover:bg-purple-700 transition-all"
+                            >
+                                Generate Intelligence Report
+                            </button>
+                        </div>
+
+                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
+                                <Network className="w-5 h-5" />
+                                Partnership Analyzer - Analyze existing partnerships
+                            </h4>
+                            <p className="text-sm text-orange-700 mb-3">Comprehensive analysis of existing partnerships with Symbiotic Partnership Index scoring and improvement recommendations.</p>
+                            <button
+                                onClick={() => openModal('doc-analyzer')}
+                                className="px-4 py-2 bg-orange-600 text-white text-sm font-bold rounded hover:bg-orange-700 transition-all"
+                            >
+                                Analyze Partnership
+                            </button>
+                        </div>
                     </div>
                 </div>
 

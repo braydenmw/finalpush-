@@ -370,16 +370,98 @@ export const Gateway: React.FC<GatewayProps> = ({ params, onUpdate, onComplete }
                                         </select>
                                         {showCustomCategoryInput && <input type="text" value={params.customOrganizationSubType || ''} onChange={(e) => update('customOrganizationSubType', e.target.value)} className={`${inputStyles} mt-2 bg-yellow-50`} placeholder="Specify Structure..." />}
                                     </div>
+                                    <div>
+                                        <label className={labelStyles}>Years in Operation</label>
+                                        <select value={params.yearsOperation || ''} onChange={(e) => update('yearsOperation', e.target.value)} className={inputStyles}>
+                                            <option value="">Select experience...</option>
+                                            <option value="0-2">Startup (0-2 years)</option>
+                                            <option value="3-5">Early Stage (3-5 years)</option>
+                                            <option value="6-10">Growing (6-10 years)</option>
+                                            <option value="11-20">Established (11-20 years)</option>
+                                            <option value="20+">Legacy (20+ years)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className={labelStyles}>Decision Authority Level</label>
+                                        <select value={params.decisionAuthority || ''} onChange={(e) => update('decisionAuthority', e.target.value)} className={inputStyles}>
+                                            <option value="">Select authority...</option>
+                                            <option value="Executive">C-Suite Executive</option>
+                                            <option value="Board">Board Member</option>
+                                            <option value="Manager">Department Manager</option>
+                                            <option value="Analyst">Business Analyst</option>
+                                            <option value="Consultant">External Consultant</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="space-y-6">
                                     <div><label className={labelStyles}>Full Name</label><input type="text" value={params.userName} onChange={e => update('userName', e.target.value)} className={inputStyles} placeholder="e.g. Jane Doe" /></div>
                                     <div><label className={labelStyles}>Role / Title</label><input type="text" value={params.userDepartment} onChange={e => update('userDepartment', e.target.value)} className={inputStyles} placeholder="e.g. Minister of Trade" /></div>
+                                    <div>
+                                        <label className={labelStyles}>Organization Name</label>
+                                        <input type="text" value={params.organizationName} onChange={(e) => update('organizationName', e.target.value)} className={inputStyles} placeholder="Enter organization name" />
+                                    </div>
+                                    <div>
+                                        <label className={labelStyles}>Organization Address</label>
+                                        <input type="text" value={params.organizationAddress || ''} onChange={(e) => update('organizationAddress', e.target.value)} className={inputStyles} placeholder="Street address, city, country" />
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-10">
-                                <div><label className={labelStyles}>Headquarters Country</label><select value={params.userCountry} onChange={(e) => update('userCountry', e.target.value)} className={inputStyles}><option value="">Select Country...</option>{REGIONS_AND_COUNTRIES.flatMap(r => r.countries).sort().map(c => <option key={c} value={c}>{c}</option>)}</select></div>
-                                <div><label className={labelStyles}>Headquarters City</label><input type="text" value={params.userCity || ''} onChange={e => update('userCity', e.target.value)} className={inputStyles} placeholder="e.g. Geneva" /></div>
+                                <div>
+                                    <label className={labelStyles}>Headquarters Country</label>
+                                    <select value={params.userCountry} onChange={(e) => update('userCountry', e.target.value)} className={inputStyles}>
+                                        <option value="">Select Country...</option>
+                                        {REGIONS_AND_COUNTRIES.flatMap(r => r.countries).sort().map(c => <option key={c} value={c}>{c}</option>)}
+                                    </select>
+                                    <button onClick={() => openManualModal('Enter Country', 'Country Name', 'userCountry')} className="text-xs text-blue-600 hover:text-blue-800 mt-1 underline">Enter manually</button>
+                                </div>
+                                <div>
+                                    <label className={labelStyles}>Headquarters City</label>
+                                    <input type="text" value={params.userCity || ''} onChange={e => update('userCity', e.target.value)} className={inputStyles} placeholder="e.g. Geneva" />
+                                    <button onClick={() => openManualModal('Enter City', 'City Name', 'userCity')} className="text-xs text-blue-600 hover:text-blue-800 mt-1 underline">Enter manually</button>
+                                </div>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-10">
+                                <div>
+                                    <label className={labelStyles}>Industry Classification</label>
+                                    <select value={params.industryClassification || ''} onChange={(e) => update('industryClassification', e.target.value)} className={inputStyles}>
+                                        <option value="">Select Classification...</option>
+                                        <option value="Primary">Primary (Agriculture, Mining)</option>
+                                        <option value="Secondary">Secondary (Manufacturing)</option>
+                                        <option value="Tertiary">Tertiary (Services)</option>
+                                        <option value="Quaternary">Quaternary (Information, R&D)</option>
+                                        <option value="Quinary">Quinary (High-level Services)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className={labelStyles}>Organization Size</label>
+                                    <select value={params.organizationSize || ''} onChange={(e) => update('organizationSize', e.target.value)} className={inputStyles}>
+                                        <option value="">Select Size...</option>
+                                        <option value="Startup">Startup (1-50 employees)</option>
+                                        <option value="SMB">SMB (51-500 employees)</option>
+                                        <option value="Mid-Market">Mid-Market (501-5000 employees)</option>
+                                        <option value="Enterprise">Enterprise (5000+ employees)</option>
+                                        <option value="Government">Government Agency</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-10">
+                                <div>
+                                    <label className={labelStyles}>Primary Contact Email</label>
+                                    <input type="email" value={params.contactEmail || ''} onChange={e => update('contactEmail', e.target.value)} className={inputStyles} placeholder="contact@organization.com" />
+                                </div>
+                                <div>
+                                    <label className={labelStyles}>Primary Contact Phone</label>
+                                    <input type="tel" value={params.contactPhone || ''} onChange={e => update('contactPhone', e.target.value)} className={inputStyles} placeholder="+1 (555) 123-4567" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className={labelStyles}>Organization Website</label>
+                                <input type="url" value={params.organizationWebsite || ''} onChange={e => update('organizationWebsite', e.target.value)} className={inputStyles} placeholder="https://www.organization.com" />
                             </div>
 
                             {/* INTELLIGENT MATCHING SECTION */}

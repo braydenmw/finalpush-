@@ -111,6 +111,10 @@ export interface ReportParameters {
   headcountBand?: string;
   yearsOperation?: string;
   decisionAuthority?: string;
+  industryClassification?: string;
+  organizationSize?: string;
+  contactEmail?: string;
+  contactPhone?: string;
   
   customOrganizationType?: string;
   customOrganizationSubType?: string;
