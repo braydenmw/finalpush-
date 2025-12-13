@@ -207,7 +207,7 @@ export const Footer: React.FC = () => {
       {/* Legal Modal */}
       <AnimatePresence>
         {activeModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -219,7 +219,7 @@ export const Footer: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-6xl bg-bw-navy border border-gray-700 rounded-lg shadow-2xl max-h-[90vh] flex flex-col overflow-hidden"
+              className="relative w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[85vw] lg:max-w-5xl bg-bw-navy border border-gray-700 rounded-lg shadow-2xl h-[85vh] max-h-[85vh] flex flex-col overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700 bg-bw-navy/50">
