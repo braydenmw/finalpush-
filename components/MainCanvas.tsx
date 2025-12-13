@@ -321,181 +321,188 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                 <div>
                     <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-3">Optional Intelligence Enhancements</h3>
                     <p className="text-xs text-stone-500 mb-4">Enhance your Strategic Roadmap draft with specialized analysis. Select any combination to add depth and insights that will improve your final reports and letters.</p>
-                    <div className="grid grid-cols-1 gap-3">
-                        <button
-                            onClick={() => {
-                                // Add ROI analysis to draft
-                                const roiAnalysis = {
-                                  type: 'analysis',
-                                  title: 'ROI Diagnostic Analysis',
-                                  content: 'Financial viability assessment with IRR calculations and payback period analysis.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, roiAnalysis]);
-                                alert('ROI Diagnostic Analysis added to your Strategic Roadmap draft. This will enhance financial sections of generated documents.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-indigo-50 to-indigo-100 border border-indigo-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <BarChart3 className="w-6 h-6 text-indigo-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">ROI Diagnostic</span>
-                                    <p className="text-xs text-indigo-700 font-medium">Financial Analysis Tool</p>
+                    <div className="grid grid-cols-3 gap-3">
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <BarChart3 className="w-4 h-4 text-indigo-600" />
+                                    <span className="text-xs font-bold text-stone-900">ROI Diagnostic</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Financial viability assessment</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Calculates Return on Investment, Internal Rate of Return, and payback periods to validate financial viability.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Executive Summary, Investment Memos, Term Sheets</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add scenario planning to draft
-                                const scenarioAnalysis = {
-                                  type: 'analysis',
-                                  title: 'Multi-Scenario Planning',
-                                  content: 'Best case, base case, and worst case financial projections with risk-weighted outcomes.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, scenarioAnalysis]);
-                                alert('Multi-Scenario Planning added to your Strategic Roadmap draft. This provides comprehensive risk assessment for decision-makers.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <Network className="w-6 h-6 text-blue-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Scenario Planning</span>
-                                    <p className="text-xs text-blue-700 font-medium">Risk Assessment Tool</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Network className="w-4 h-4 text-blue-600" />
+                                    <span className="text-xs font-bold text-stone-900">Scenario Planning</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Multi-outcome modeling</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Models multiple outcome scenarios (best/base/worst case) with probability weighting and risk mitigation strategies.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Assessments, Due Diligence Reports, Investment Proposals</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add due diligence to draft
-                                const dueDiligenceAnalysis = {
-                                  type: 'analysis',
-                                  title: 'Due Diligence Intelligence',
-                                  content: 'Automated background checks and compliance verification for potential partners and targets.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, dueDiligenceAnalysis]);
-                                alert('Due Diligence Intelligence added to your Strategic Roadmap draft. This strengthens credibility and reduces legal risks.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <ShieldCheck className="w-6 h-6 text-green-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Due Diligence Engine</span>
-                                    <p className="text-xs text-green-700 font-medium">Compliance Verification</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-green-600 focus:ring-green-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <ShieldCheck className="w-4 h-4 text-green-600" />
+                                    <span className="text-xs font-bold text-stone-900">Due Diligence</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Background verification</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Comprehensive background verification, regulatory compliance checks, and risk factor identification.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Partnership Agreements, Legal Documents, Risk Reports</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add marketplace intelligence to draft
-                                const marketplaceAnalysis = {
-                                  type: 'marketplace',
-                                  title: 'Partner Compatibility Analysis',
-                                  content: 'AI-powered matching algorithm assessing cultural fit, strategic alignment, and partnership potential.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, marketplaceAnalysis]);
-                                alert('Partner Compatibility Analysis added to your Strategic Roadmap draft. This identifies optimal partnership opportunities.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <Handshake className="w-6 h-6 text-pink-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Partner Compatibility</span>
-                                    <p className="text-xs text-pink-700 font-medium">Strategic Matching</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-pink-600 focus:ring-pink-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Handshake className="w-4 h-4 text-pink-600" />
+                                    <span className="text-xs font-bold text-stone-900">Partner Compatibility</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Strategic matching</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Evaluates potential partners based on strategic alignment, cultural compatibility, and mutual benefit potential.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Partnership Proposals, LOIs, Joint Venture Agreements</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add diversification analysis to draft
-                                const diversificationAnalysis = {
-                                  type: 'analysis',
-                                  title: 'Market Diversification Analysis',
-                                  content: 'Herfindahl-Hirschman Index analysis of market concentration and diversification recommendations.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, diversificationAnalysis]);
-                                alert('Market Diversification Analysis added to your Strategic Roadmap draft. This optimizes portfolio risk management.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 rounded-lg hover:shadow-md hover:border-purple-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <PieChart className="w-6 h-6 text-purple-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Diversification Analysis</span>
-                                    <p className="text-xs text-purple-700 font-medium">Portfolio Optimization</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-purple-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-purple-600 focus:ring-purple-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <PieChart className="w-4 h-4 text-purple-600" />
+                                    <span className="text-xs font-bold text-stone-900">Diversification Analysis</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Portfolio optimization</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Analyzes market concentration using HHI methodology and recommends diversification strategies to reduce dependency risks.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Reports, Investment Strategies, Portfolio Analysis</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add ethical compliance to draft
-                                const ethicalAnalysis = {
-                                  type: 'analysis',
-                                  title: 'Ethical & Compliance Review',
-                                  content: 'Comprehensive ethical assessment including labor practices, environmental impact, and corruption risk analysis.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, ethicalAnalysis]);
-                                alert('Ethical & Compliance Review added to your Strategic Roadmap draft. This ensures sustainable and responsible partnerships.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-lg hover:shadow-md hover:border-red-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <Shield className="w-6 h-6 text-red-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Ethical Compliance</span>
-                                    <p className="text-xs text-red-700 font-medium">Sustainability Assessment</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-red-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Shield className="w-4 h-4 text-red-600" />
+                                    <span className="text-xs font-bold text-stone-900">Ethical Compliance</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Sustainability assessment</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Evaluates ethical standards, labor practices, environmental impact, and corruption risks with mitigation recommendations.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Compliance Reports, ESG Analysis, Stakeholder Communications</p>
-                        </button>
+                        </label>
 
-                        <button
-                            onClick={() => {
-                                // Add historical precedent to draft
-                                const historicalAnalysis = {
-                                  type: 'analysis',
-                                  title: 'Historical Precedent Analysis',
-                                  content: 'Comparative analysis against 100 years of historical partnership data with success probability modeling.',
-                                  timestamp: new Date()
-                                };
-                                setInjectedComponents(prev => [...prev, historicalAnalysis]);
-                                alert('Historical Precedent Analysis added to your Strategic Roadmap draft. This provides data-driven insights from past partnerships.');
-                            }}
-                            className="p-4 bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200 rounded-lg hover:shadow-md hover:border-amber-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <History className="w-6 h-6 text-amber-600" />
-                                <div>
-                                    <span className="text-sm font-bold text-stone-900">Historical Precedents</span>
-                                    <p className="text-xs text-amber-700 font-medium">Data-Driven Insights</p>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-amber-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <History className="w-4 h-4 text-amber-600" />
+                                    <span className="text-xs font-bold text-stone-900">Historical Precedents</span>
                                 </div>
+                                <p className="text-[10px] text-stone-600">Data-driven insights</p>
                             </div>
-                            <p className="text-xs text-stone-600 mb-2">Compares current opportunity against 100+ years of historical partnership data with success probability calculations.</p>
-                            <p className="text-[10px] text-stone-500 italic">Enhances: Risk Assessments, Decision Frameworks, Strategic Planning</p>
-                        </button>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-teal-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-teal-600 focus:ring-teal-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <TrendingUp className="w-4 h-4 text-teal-600" />
+                                    <span className="text-xs font-bold text-stone-900">Growth Modeling</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Revenue projections</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-orange-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Users className="w-4 h-4 text-orange-600" />
+                                    <span className="text-xs font-bold text-stone-900">Stakeholder Analysis</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Interest mapping</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-cyan-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Globe className="w-4 h-4 text-cyan-600" />
+                                    <span className="text-xs font-bold text-stone-900">Geopolitical Risk</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Regional stability analysis</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-lime-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-lime-600 focus:ring-lime-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Calculator className="w-4 h-4 text-lime-600" />
+                                    <span className="text-xs font-bold text-stone-900">Valuation Engine</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Asset valuation models</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Activity className="w-4 h-4 text-indigo-600" />
+                                    <span className="text-xs font-bold text-stone-900">Performance Metrics</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">KPI benchmarking</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-rose-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <GitBranch className="w-4 h-4 text-rose-600" />
+                                    <span className="text-xs font-bold text-stone-900">Supply Chain Analysis</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Dependency mapping</p>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -550,62 +557,230 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                     <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-3">Document Generation Suite</h3>
                     <p className="text-xs text-stone-500 mb-4">Generate official documents from your finalized Strategic Roadmap. Choose from these professional document types:</p>
 
-                    <div className="space-y-3">
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                            <h4 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
-                                <FileText className="w-5 h-5" />
-                                Document Suite - Generate LOI, MOU, proposals & more
-                            </h4>
-                            <p className="text-sm text-blue-700 mb-3">Comprehensive business document generation including Letters of Intent, Memorandums of Understanding, partnership proposals, and formal business agreements.</p>
-                            <button
-                                onClick={() => openModal('doc-suite')}
-                                className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded hover:bg-blue-700 transition-all"
-                            >
-                                Configure Documents
-                            </button>
-                        </div>
+                    <div className="grid grid-cols-3 gap-3">
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-blue-600" />
+                                    <span className="text-xs font-bold text-stone-900">Letter of Intent</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">LOI document generation</p>
+                            </div>
+                        </label>
 
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                            <h4 className="font-bold text-green-900 mb-2 flex items-center gap-2">
-                                <Presentation className="w-5 h-5" />
-                                Executive Summary - AI-generated strategic overview
-                            </h4>
-                            <p className="text-sm text-green-700 mb-3">Professional executive summaries tailored for different audiences (investors, board members, legal teams) with customizable length and focus areas.</p>
-                            <button
-                                onClick={() => openModal('doc-summary')}
-                                className="px-4 py-2 bg-green-600 text-white text-sm font-bold rounded hover:bg-green-700 transition-all"
-                            >
-                                Generate Summary
-                            </button>
-                        </div>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-green-600 focus:ring-green-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-green-600" />
+                                    <span className="text-xs font-bold text-stone-900">Memorandum of Understanding</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">MOU document creation</p>
+                            </div>
+                        </label>
 
-                        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                            <h4 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
-                                <Database className="w-5 h-5" />
-                                Business Intelligence - Country-specific regulatory insights
-                            </h4>
-                            <p className="text-sm text-purple-700 mb-3">In-depth country and regional analysis including regulatory frameworks, business environment, and market intelligence reports.</p>
-                            <button
-                                onClick={() => openModal('doc-bi')}
-                                className="px-4 py-2 bg-purple-600 text-white text-sm font-bold rounded hover:bg-purple-700 transition-all"
-                            >
-                                Generate Intelligence Report
-                            </button>
-                        </div>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-purple-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-purple-600 focus:ring-purple-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Presentation className="w-4 h-4 text-purple-600" />
+                                    <span className="text-xs font-bold text-stone-900">Executive Summary</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Strategic overview report</p>
+                            </div>
+                        </label>
 
-                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                            <h4 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
-                                <Network className="w-5 h-5" />
-                                Partnership Analyzer - Analyze existing partnerships
-                            </h4>
-                            <p className="text-sm text-orange-700 mb-3">Comprehensive analysis of existing partnerships with Symbiotic Partnership Index scoring and improvement recommendations.</p>
-                            <button
-                                onClick={() => openModal('doc-analyzer')}
-                                className="px-4 py-2 bg-orange-600 text-white text-sm font-bold rounded hover:bg-orange-700 transition-all"
-                            >
-                                Analyze Partnership
-                            </button>
-                        </div>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-orange-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-orange-600" />
+                                    <span className="text-xs font-bold text-stone-900">Term Sheet</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Deal terms outline</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-red-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Briefcase className="w-4 h-4 text-red-600" />
+                                    <span className="text-xs font-bold text-stone-900">Investment Memo</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Capital investment justification</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-pink-600 focus:ring-pink-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-pink-600" />
+                                    <span className="text-xs font-bold text-stone-900">Formal Proposal</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Partnership proposal</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-teal-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-teal-600 focus:ring-teal-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Search className="w-4 h-4 text-teal-600" />
+                                    <span className="text-xs font-bold text-stone-900">Due Diligence Request</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Information request list</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-cyan-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Database className="w-4 h-4 text-cyan-600" />
+                                    <span className="text-xs font-bold text-stone-900">Business Intelligence Report</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Market intelligence analysis</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-lime-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-lime-600 focus:ring-lime-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Network className="w-4 h-4 text-lime-600" />
+                                    <span className="text-xs font-bold text-stone-900">Partnership Analyzer</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Existing partnership analysis</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Calculator className="w-4 h-4 text-indigo-600" />
+                                    <span className="text-xs font-bold text-stone-900">Financial Model</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Financial projections</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-amber-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Shield className="w-4 h-4 text-amber-600" />
+                                    <span className="text-xs font-bold text-stone-900">Risk Assessment Report</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Comprehensive risk analysis</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-rose-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Users className="w-4 h-4 text-rose-600" />
+                                    <span className="text-xs font-bold text-stone-900">Stakeholder Analysis</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Interest and influence mapping</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-emerald-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Globe className="w-4 h-4 text-emerald-600" />
+                                    <span className="text-xs font-bold text-stone-900">Market Entry Strategy</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Regional expansion plan</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-violet-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-violet-600 focus:ring-violet-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <TrendingUp className="w-4 h-4 text-violet-600" />
+                                    <span className="text-xs font-bold text-stone-900">Competitive Analysis</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Market position assessment</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-slate-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-slate-600 focus:ring-slate-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Activity className="w-4 h-4 text-slate-600" />
+                                    <span className="text-xs font-bold text-stone-900">Operational Plan</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Implementation roadmap</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-yellow-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <GitBranch className="w-4 h-4 text-yellow-600" />
+                                    <span className="text-xs font-bold text-stone-900">Integration Plan</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Post-merger integration</p>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -614,66 +789,131 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
                     <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-3">Letter Generation Suite</h3>
                     <p className="text-xs text-stone-500 mb-4">After finalizing your strategic dossier, generate formal letters and legal documents here. These outputs are pre-populated with the key terms, entities, and objectives from your analysis, ready for negotiation and engagement.</p>
                     <div className="grid grid-cols-3 gap-3">
-                        <button
-                            onClick={() => openModal('letter-loi')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Letter of Intent (LOI)</span>
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-green-600 focus:ring-green-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-green-600" />
+                                    <span className="text-xs font-bold text-stone-900">Letter of Intent</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Formal LOI document</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Draft a formal LOI document</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('letter-termsheet')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Term Sheet</span>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-blue-600" />
+                                    <span className="text-xs font-bold text-stone-900">Term Sheet</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Deal terms outline</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Outline key deal terms</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('letter-mou')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Memorandum (MOU)</span>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-purple-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-purple-600 focus:ring-purple-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <FileText className="w-4 h-4 text-purple-600" />
+                                    <span className="text-xs font-bold text-stone-900">Memorandum of Understanding</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">MOU document creation</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Generate a memorandum</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('letter-proposal')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <FileText className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Formal Proposal</span>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-orange-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Presentation className="w-4 h-4 text-orange-600" />
+                                    <span className="text-xs font-bold text-stone-900">Formal Proposal</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Partnership proposal</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Create a partnership proposal</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('letter-im')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <Briefcase className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Investment Memo</span>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-red-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Briefcase className="w-4 h-4 text-red-600" />
+                                    <span className="text-xs font-bold text-stone-900">Investment Memo</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Capital investment justification</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Justify capital investment</p>
-                        </button>
-                        <button
-                            onClick={() => openModal('letter-ddr')}
-                            className="p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-green-300 transition-all text-left group"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <Search className="w-5 h-5 text-green-600" />
-                                <span className="text-xs font-bold text-stone-900">Due Diligence Request</span>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-pink-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-pink-600 focus:ring-pink-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Search className="w-4 h-4 text-pink-600" />
+                                    <span className="text-xs font-bold text-stone-900">Due Diligence Request</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Information request list</p>
                             </div>
-                            <p className="text-[10px] text-stone-600">Formal info request list</p>
-                        </button>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-teal-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-teal-600 focus:ring-teal-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Handshake className="w-4 h-4 text-teal-600" />
+                                    <span className="text-xs font-bold text-stone-900">Joint Venture Agreement</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">JV partnership terms</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-cyan-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Shield className="w-4 h-4 text-cyan-600" />
+                                    <span className="text-xs font-bold text-stone-900">Non-Disclosure Agreement</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">Confidentiality agreement</p>
+                            </div>
+                        </label>
+
+                        <label className="flex items-start gap-2 p-3 bg-white border border-stone-200 rounded-lg hover:shadow-md hover:border-lime-300 transition-all cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                className="mt-1 h-4 w-4 text-lime-600 focus:ring-lime-500 border-stone-300 rounded"
+                            />
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Network className="w-4 h-4 text-lime-600" />
+                                    <span className="text-xs font-bold text-stone-900">Licensing Agreement</span>
+                                </div>
+                                <p className="text-[10px] text-stone-600">IP licensing terms</p>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -1699,17 +1939,81 @@ const MainCanvas: React.FC<MainCanvasProps> = ({
             <div className="flex-1 w-full overflow-y-auto custom-scrollbar p-8 flex justify-center relative">
                 {/* Floating Add-in Toolbar */}
                 <div className="absolute top-8 right-8 flex flex-col gap-2 z-20">
-                    {[
-                        { icon: PieChart, label: 'Add Pie Chart' },
-                        { icon: BarChart3, label: 'Add Bar Chart' },
-                        { icon: Network, label: 'Add Network Graph' },
-                        { icon: Database, label: 'Add Data Table' },
-                        { icon: Cpu, label: 'Add AI Analysis Module' },
-                    ].map(tool => (
-                        <button key={tool.label} onClick={() => openModal(`add-${tool.label.toLowerCase().replace(/ /g, '-')}`)} title={tool.label} className="p-3 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-full shadow-lg hover:bg-bw-navy hover:text-white text-stone-600 transition-all">
-                            <tool.icon size={18} />
-                        </button>
-                    ))}
+                    {/* Charts Section */}
+                    <div className="bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg shadow-lg p-2">
+                        <div className="text-xs font-bold text-stone-600 mb-2 text-center">Charts</div>
+                        <div className="grid grid-cols-2 gap-1">
+                            <button onClick={() => openModal('add-pie-chart')} title="Add Pie Chart" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <PieChart size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-bar-chart')} title="Add Bar Chart" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <BarChart3 size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-line-chart')} title="Add Line Chart" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <TrendingUp size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-area-chart')} title="Add Area Chart" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Activity size={16} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Data Visualization Section */}
+                    <div className="bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg shadow-lg p-2">
+                        <div className="text-xs font-bold text-stone-600 mb-2 text-center">Data</div>
+                        <div className="grid grid-cols-2 gap-1">
+                            <button onClick={() => openModal('add-data-table')} title="Add Data Table" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Database size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-network-graph')} title="Add Network Graph" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Network size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-heatmap')} title="Add Heatmap" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <BarChart size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-scatter-plot')} title="Add Scatter Plot" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <GitBranch size={16} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* AI Analysis Section */}
+                    <div className="bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg shadow-lg p-2">
+                        <div className="text-xs font-bold text-stone-600 mb-2 text-center">AI Analysis</div>
+                        <div className="grid grid-cols-2 gap-1">
+                            <button onClick={() => openModal('add-sentiment-analysis')} title="Sentiment Analysis" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Cpu size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-trend-analysis')} title="Trend Analysis" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <TrendingUp size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-risk-assessment')} title="Risk Assessment" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Shield size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-market-prediction')} title="Market Prediction" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <BarChart3 size={16} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg shadow-lg p-2">
+                        <div className="text-xs font-bold text-stone-600 mb-2 text-center">Content</div>
+                        <div className="grid grid-cols-2 gap-1">
+                            <button onClick={() => openModal('add-text-block')} title="Add Text Block" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <FileText size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-image')} title="Add Image" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <Users size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-quote')} title="Add Quote" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <MessageCircle size={16} />
+                            </button>
+                            <button onClick={() => openModal('add-callout')} title="Add Callout" className="p-2 hover:bg-stone-100 rounded text-stone-600 transition-all">
+                                <AlertCircle size={16} />
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 {/* The Page Itself */}
