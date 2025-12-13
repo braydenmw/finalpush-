@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
   const TermsContent = () => (
     <div className="space-y-8">
       {/* How to Use and Terms of Usage side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
         {/* How to Use - System Overview */}
         <div>
           <h3 className="text-xl font-serif font-bold text-bw-gold mb-2">How to Use</h3>
@@ -219,7 +219,7 @@ export const Footer: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-5xl bg-bw-navy border border-gray-700 rounded-lg shadow-2xl h-[95vh] flex flex-col overflow-hidden"
+              className="relative w-full max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-6xl bg-bw-navy border border-gray-700 rounded-lg shadow-2xl max-h-[90vh] flex flex-col overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700 bg-bw-navy/50">
@@ -236,7 +236,7 @@ export const Footer: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="flex-1 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 min-h-0">
+              <div className="flex-1 p-6 sm:p-8 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 min-h-0">
                 <div className="max-w-none">
                   {activeModal === 'privacy' ? <PrivacyContent /> : <TermsContent />}
                 </div>
